@@ -19,7 +19,6 @@ import RequestService from "@/api/RequestService";
 import {useCharacterStore} from "@/store";
 import SideSection from "@/components/app/SideSection.vue";
 import CharacterDetails from "@/components/app/characters/CharacterDetails.vue";
-import {useRoute} from "vue-router";
 import LoadindIcon from "@/assets/icons/LoadindIcon.vue";
 
 
@@ -30,10 +29,9 @@ function getRandomInt(min:number, max:number) {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-const route = useRoute()
 onMounted(async () => {
   await store.startLoading()
-  await RequestService.getCharacterById(getRandomInt(1, 826)).then(res => store.selectCharacter(res.data)).then(() => console.log(123))
+  await RequestService.getCharacterById(getRandomInt(1, 826)).then(res => store.selectCharacter(res.data))
   await RequestService.getAllCharacters().then(res => store.selectAllCharacters(res.data)).then(() => store.stopLoading())
 })
 
