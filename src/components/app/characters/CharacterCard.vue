@@ -1,24 +1,25 @@
 <template>
   <div class="card" @click="selectCharacter(character.id)">
-    <h1  :key="character.id">{{character.name}}</h1>
+    <h1 :key="character.id">{{character.name}}</h1>
   </div>
 </template>
 
 <script lang="ts" setup>
 
-import {Character} from "@/types/characters/charactres";
+import {ICharacter} from "@/types/characters/charactres";
 import {defineProps} from "vue";
 import RequestService from "@/api/RequestService";
 import {useCharacterStore} from "@/store";
 
 interface Props {
-  character: Character
+  character: ICharacter
 }
 
 
 const store = useCharacterStore()
 const selectCharacter = async (id:number) => {
-  await RequestService.getCharacterById(id).then(res => store.selectCharacter(res.data))
+  store.startLoading()
+  await RequestService.getCharacterById(id).then(res => store.selectCharacter(res.data)).then(() => store.stopLoading())
 }
 
 

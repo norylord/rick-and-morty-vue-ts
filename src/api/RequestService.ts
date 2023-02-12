@@ -1,8 +1,8 @@
 import FetchService from "@/api/FetchService";
-import {SearchConfig} from "@/types/characters/charactres";
+import {ISearchConfig} from "@/types/characters/charactres";
 
 class RequestService {
-    getAllCharacters(cfg?: SearchConfig) {
+    getAllCharacters(cfg?: ISearchConfig) {
         const url = `https://rickandmortyapi.com/api/character`
         return FetchService.getData(url, cfg);
     }

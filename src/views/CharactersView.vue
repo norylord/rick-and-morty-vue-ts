@@ -1,25 +1,24 @@
 <template>
   <section class="characters section">
     <div class="characters__filter">
-      <TheInput class="characters__filter-name" v-model="cfg.name" type="string" placeholder="Введите имя персонажа"/>
-      <TheSelect class="characters__filter-status" @select="setStatus" :options="CharactersStatus"/>
+      <UIInput class="characters__filter-name" v-model="cfg.name" type="string" placeholder="Введите имя персонажа"/>
+      <UISelect class="characters__filter-status" @select="setStatus" :options="CharactersStatus"/>
     </div>
-    <div class="characters__wrapper">
-      <CharacterList/>
-    </div>
+    <CharactersIndex v-if="store.errorMessage === ''"/>
+    <h1 v-else class="characters__error">Ничего не найдено</h1>
   </section>
 </template>
 
 <script lang="ts" setup>
-import {CharactersStatus, SearchConfig} from "@/types/characters/charactres";
+import {CharactersStatus, ISearchConfig} from "@/types/characters/charactres";
 import {reactive, watch} from "vue";
 import {useCharacterStore} from "@/store";
-import TheInput from "@/components/ui/TheInput.vue";
-import TheSelect from "@/components/ui/select/TheSelect.vue";
+import UIInput from "@/components/ui/input/UIInput.vue";
+import UISelect from "@/components/ui/select/UISelect.vue";
 import RequestService from "@/api/RequestService";
-import CharacterList from "@/components/app/characters/CharacterList.vue";
+import CharactersIndex from "@/components/app/characters/CharactersIndex.vue";
 
-const cfg = reactive<SearchConfig>({
+const cfg = reactive<ISearchConfig>({
   name: '',
   status: CharactersStatus.None,
   page: 1
@@ -32,7 +31,7 @@ const setStatus = (status:CharactersStatus) => {
 const store = useCharacterStore()
 
 watch(cfg, async ()=> {
-  await RequestService.getAllCharacters(cfg).then(res => store.selectAllCharacters(res.data))
+  await RequestService.getAllCharacters(cfg).then(res => store.selectAllCharacters(res.data)).then(() => store.setErrorMessage(''))
 })
 
 
@@ -41,6 +40,9 @@ watch(cfg, async ()=> {
 <style lang='sass'>
 .characters
   background: linear-gradient(180deg, #404952 0%, #2A203F 100%)
+  &__error
+    text-align: center
+    font-weight: 300
   &__filter
     width: 100%
     height: 30vh
@@ -51,9 +53,4 @@ watch(cfg, async ()=> {
       margin: 16px 0
     &-status
       margin: 16px 0
-  &__wrapper
-    width: 100%
-    height: 70vh
-    padding: 16px
-    overflow-y: scroll
 </style>

@@ -18,13 +18,12 @@ onMounted(async () => {
 <style lang='sass'>
 .home
   &__img
-    position: absolute
-    bottom: 0
-    height: 90vh
+    position: relative
+    height: 100vh
     width: 100vw
     z-index: 100
     background-position-x: 30%
     background-position-y: bottom
     background-repeat: no-repeat
-    background-image: url("@/assets/img/Group 3.svg")
+    background-image: url("@/assets/img/cover.svg")
 </style>

@@ -1,4 +1,4 @@
-export interface Character {
+export interface ICharacter {
     id?: number,
     name?: string,
     status?: string,
@@ -13,18 +13,18 @@ export interface Character {
     created?: string,
 }
 
-export interface Characters {
-    characters: Character[]
+export interface ICharacters {
+    characters: ICharacter[]
 }
 
 export enum CharactersStatus {
-    Dead = 'Dead',
     Alive = 'Alive',
+    Dead = 'Dead',
     Unknown = 'Unknown',
     None = ''
 }
 
-export interface SearchConfig {
+export interface ISearchConfig {
     name: string,
     status: CharactersStatus,
     page: number

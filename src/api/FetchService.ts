@@ -1,8 +1,8 @@
-import axios, {AxiosRequestConfig} from "axios";
-import {SearchConfig} from "@/types/characters/charactres";
+import axios, {AxiosError} from "axios";
+import {ISearchConfig} from "@/types/characters/charactres";
 
 class FetchService {
-    getData = async (url:string, cfg?: SearchConfig) => {
+    async getData  (url:string, cfg?: ISearchConfig){
         return await axios.get(url, {params:cfg})
     }
 }

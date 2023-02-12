@@ -1,36 +1,50 @@
-import { createStore } from 'vuex'
-import {Character, Characters} from "@/types/characters/charactres";
+import {ICharacter} from "@/types/characters/charactres";
 import {defineStore} from "pinia";
 
 
-interface Store {
-  selectedCharacter: Character
-  characters: Character[]
+interface IStore {
+  selectedCharacter: ICharacter
+  characters: ICharacter[],
+  isLoading: boolean,
+  isError: boolean,
+  errorMessage: string,
 }
 
 export const useCharacterStore = defineStore({
   id: 'characters',
-  state: (): Store => ({
+  state: (): IStore => ({
     characters: [],
-    selectedCharacter: {}
+    selectedCharacter: {},
+    isLoading: false,
+    isError: false,
+    errorMessage: '',
   }),
   getters: {
-    getSelectedCharacter (): Character {
+    getSelectedCharacter (): ICharacter {
       return this.selectedCharacter
     },
-    getAllCharacters (): Character[] {
+    getAllCharacters (): ICharacter[] {
       return this.characters
     }
   },
   actions: {
-    selectCharacter (character:Character){
+    selectCharacter (character:ICharacter){
       this.selectedCharacter = character
     },
-    selectAllCharacters (characters:Character[]){
+    selectAllCharacters (characters:ICharacter[]){
       this.characters = characters
     },
     clearCharacter (){
       this.selectedCharacter = {}
+    },
+    startLoading() {
+      this.isLoading = true
+    },
+    stopLoading() {
+      this.isLoading = false
+    },
+    setErrorMessage(message: string){
+      this.errorMessage = message
     }
   }
 })

@@ -4,65 +4,46 @@
       <router-view/>
     </template>
     <template #sidebar>
-      <SideBar :character="store.selectedCharacter"/>
+      <SideSection >
+        <LoadindIcon v-if="store.isLoading"/>
+        <CharacterDetails v-else/>
+      </SideSection>
     </template>
   </AppLayout>
 </template>
 
 <script lang="ts" setup>
 import AppLayout from "@/components/layouts/AppLayout.vue";
-import SideBar from "@/components/app/SideBar.vue";
-
-
-
-import {onMounted, ref} from "vue";
+import {onMounted} from "vue";
 import RequestService from "@/api/RequestService";
 import {useCharacterStore} from "@/store";
-import router from "@/router";
+import SideSection from "@/components/app/SideSection.vue";
+import CharacterDetails from "@/components/app/characters/CharacterDetails.vue";
 import {useRoute} from "vue-router";
+import LoadindIcon from "@/assets/icons/LoadindIcon.vue";
 
-const route = useRoute()
+
+const store = useCharacterStore()
+
 function getRandomInt(min:number, max:number) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+const route = useRoute()
 onMounted(async () => {
-  await RequestService.getCharacterById(getRandomInt(1, 826)).then(res => store.selectCharacter(res.data))
-  await RequestService.getAllCharacters().then(res => store.selectAllCharacters(res.data))
+  await store.startLoading()
+  await RequestService.getCharacterById(getRandomInt(1, 826)).then(res => store.selectCharacter(res.data)).then(() => console.log(123))
+  await RequestService.getAllCharacters().then(res => store.selectAllCharacters(res.data)).then(() => store.stopLoading())
 })
 
-const store = useCharacterStore()
+
 
 
 </script>
 
 <style lang='sass'>
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap')
-@import "@/assets/styles/colors.sass"
-*
-  box-sizing: border-box
-  margin: 0
-  padding: 0
-  font-family: 'Roboto', sans-serif
-  color: $text-color
-  scrollbar-color: #616161 transparent
-  ::-webkit-scrollbar
-    width: 10px
-    background-color: #1f1f5d
-
-  ::-webkit-scrollbar-track
-    background: transparent
-    box-shadow: 0 0 2px rgba(0, 0, 0, .2) inset
-
-  ::-webkit-scrollbar-thumb
-    background: #616161
-    border-radius: 2px
-  ::-webkit-scrollbar-thumb:hover
-    background: #616161
-
-.section
-  height: 100vh
-  width: 60vw
-  position: relative
+@import "@/assets/variables/_colors.sass"
+@import "@/assets/styles/_app.sass"
 </style>
