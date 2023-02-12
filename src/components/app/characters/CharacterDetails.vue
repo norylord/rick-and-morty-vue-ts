@@ -43,9 +43,10 @@ watch(store.selectedCharacter, async () => {
     display: flex
     z-index: 1000
     flex-direction: column
+    align-items: start
     &-image
-      width: 150px
-      height: 150px
+      width: 200px
+      height: 200px
     &-elem
       font-weight: 300
       margin-top: 16px

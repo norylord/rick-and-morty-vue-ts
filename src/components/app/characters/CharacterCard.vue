@@ -38,13 +38,15 @@ const props = defineProps<Props>()
   border: 2px solid #484853
   box-shadow: 4px 4px 15px 5px rgba(0, 0, 0, 0.25)
   border-radius: 1000px
-  margin: 12px 0
+  margin: 12px
   padding: 24px
   cursor: pointer
   display: flex
   justify-content: center
   flex-wrap: wrap
   max-width: 600px
+  flex: 1 0 50%
+
   &__img
     height: 100%
     max-height: 200px

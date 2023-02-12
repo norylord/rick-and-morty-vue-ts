@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="characters-list">
     <CharacterCard v-for="character in store.characters.results" :key="character.id" :character="character"/>
   </div>
 </template>
@@ -13,5 +13,8 @@ const store = useCharacterStore()
 </script>
 
 <style lang='sass'>
-
+.characters-list
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-around
 </style>

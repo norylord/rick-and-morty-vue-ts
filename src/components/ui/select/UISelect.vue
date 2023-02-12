@@ -30,7 +30,6 @@ const setOption = (e?:any) => {
   border: 2px solid #484853
   box-shadow: 4px 4px 25px 5px rgba(0, 0, 0, 0.25)
   border-radius: 1000px
-  width: 30%
   border-bottom: 2px solid #353535
   -moz-appearance: none /* Firefox */
   -webkit-appearance: none /* Safari and Chrome */

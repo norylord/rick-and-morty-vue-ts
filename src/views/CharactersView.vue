@@ -49,6 +49,7 @@ watch(cfg, async ()=> {
     padding: 16px
     display: flex
     flex-direction: column
+    align-items: start
     &-name
       margin: 16px 0
     &-status
