@@ -11,7 +11,7 @@
 import {defineEmits, defineProps} from "vue";
 
 interface Props {
-  options: []
+  options: object
 }
 const props = defineProps<Props>()
 
