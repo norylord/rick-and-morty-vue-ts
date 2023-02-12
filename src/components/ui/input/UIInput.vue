@@ -5,7 +5,7 @@
           @input="onInput"
           :value="modelValue"
           :placeholder="String(props.placeholder)"
-          class="input"
+          class="ui-input"
       />
 </template>
 
@@ -41,7 +41,7 @@ const onInput = (e?: any) => {
 </script>
 
 <style lang='sass'>
-.input
+.ui-input
   padding: 12px 32px
   font-size: 24px
   margin: 20px 0

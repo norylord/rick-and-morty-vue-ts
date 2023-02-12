@@ -1,5 +1,5 @@
 <template>
-  <button class="button">
+  <button class="ui-button">
     <slot></slot>
   </button>
 </template>
@@ -9,9 +9,9 @@
 </script>
 
 <style lang='sass'>
-@import "@/assets/styles/colors.sass"
+@import "@/assets/variables/_colors.sass"
 
-.button
+.ui-button
   padding: 16px 32px
   display: flex
   justify-content: center

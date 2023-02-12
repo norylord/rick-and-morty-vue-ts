@@ -1,8 +1,7 @@
 <template>
-  <select class="select">
+  <select class="ui-select">
     <option selected disabled value="" v-if="false">Выберите статус</option>
-    <option :key="opt" :value="opt" v-for="opt in options" @click="setOption">{{ opt }}</option>
-    <option value="" @click="setOption">Очистить</option>
+    <option :key="opt" :value="opt" v-for="opt in options" @click="setOption">{{ opt === '' ? 'None' : opt }}</option>
   </select>
 </template>
 
@@ -25,7 +24,7 @@ const setOption = (e?:any) => {
 </script>
 
 <style lang='sass'>
-.select
+.ui-select
   padding: 16px 32px
   background: linear-gradient(90deg, #333047 0%, #3F4751 100%)
   border: 2px solid #484853
