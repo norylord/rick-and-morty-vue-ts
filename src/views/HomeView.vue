@@ -1,6 +1,5 @@
 <template>
   <section class="home section">
-    <div class="home__img"></div>
   </section>
 </template>
 

@@ -33,6 +33,8 @@ const openCharactersPage = () => {
 }
 
 watch(store.selectedCharacter, async () => {
+  console.log(123);
+  
   characterFirstEpisode.value = await RequestService.getEpisode(store.selectedCharacter.episode[0]).then(res => res.data.name)
 })
 
@@ -45,13 +47,13 @@ watch(store.selectedCharacter, async () => {
     flex-direction: column
     align-items: start
     &-image
-      width: 200px
-      height: 200px
+      width: 220px
+      height: 220px
     &-elem
       font-weight: 300
       margin-top: 16px
     &-name
-      font-size: 36px
+      font-size: 42px
     &-info
       font-size: 24px
     &-label

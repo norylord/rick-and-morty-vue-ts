@@ -4,8 +4,8 @@
       <router-view/>
     </template>
     <template #sidebar>
-      <SideSection >
-        <LoadindIcon v-if="store.isLoading"/>
+      <SideSection>
+        <LoadingIcon v-if="store.isLoading"/>
         <CharacterDetails v-else/>
       </SideSection>
     </template>
@@ -19,23 +19,22 @@ import RequestService from "@/api/RequestService";
 import {useCharacterStore} from "@/store";
 import SideSection from "@/components/app/SideSection.vue";
 import CharacterDetails from "@/components/app/characters/CharacterDetails.vue";
-import LoadindIcon from "@/assets/icons/LoadindIcon.vue";
+import LoadingIcon from "@/assets/icons/LoadingIcon.vue";
 
 
 const store = useCharacterStore()
 
-function getRandomInt(min:number, max:number) {
+function getRandomInt(min: number, max: number) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
 onMounted(async () => {
   await store.startLoading()
   await RequestService.getCharacterById(getRandomInt(1, 826)).then(res => store.selectCharacter(res.data))
   await RequestService.getAllCharacters().then(res => store.selectAllCharacters(res.data)).then(() => store.stopLoading())
 })
-
-
 
 
 </script>

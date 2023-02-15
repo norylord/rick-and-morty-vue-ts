@@ -13,10 +13,6 @@ export interface ICharacter {
     created?: string,
 }
 
-export interface ICharacters {
-    characters: ICharacter[]
-}
-
 export enum CharactersStatus {
     Alive = 'Alive',
     Dead = 'Dead',

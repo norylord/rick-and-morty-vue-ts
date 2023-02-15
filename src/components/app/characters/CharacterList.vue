@@ -17,4 +17,9 @@ const store = useCharacterStore()
   display: flex
   flex-flow: row wrap
   justify-content: space-around
+
+  &__observer
+    background: red
+    width: 100%
+    height: 20px
 </style>
