@@ -1,5 +1,6 @@
 <template>
   <section class="home section">
+    <h1 class="home-title">Rick and Morty</h1>
   </section>
 </template>
 
@@ -16,6 +17,10 @@ onMounted(async () => {
 
 <style lang='sass'>
 .home
+  &-title
+    font-weight: 300
+    font-size: 42px
+
   &__img
     position: relative
     height: 100vh

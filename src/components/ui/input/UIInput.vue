@@ -1,16 +1,16 @@
 <template>
-      <input
-          ref="input"
-          :type="type"
-          @input="onInput"
-          :value="modelValue"
-          :placeholder="String(props.placeholder)"
-          class="ui-input"
-      />
+  <input
+      ref="input"
+      :type="type"
+      @input="onInput"
+      :value="modelValue"
+      :placeholder="String(props.placeholder)"
+      class="ui-input"
+  />
 </template>
 
 <script setup lang="ts">
-import {  ref } from 'vue';
+import {ref} from 'vue';
 import {defineEmits, defineProps} from "vue";
 
 
@@ -48,9 +48,11 @@ const onInput = (e?: any) => {
   width: 100%
   font-weight: 300
   outline: none
-  background: linear-gradient(90deg, #333047 0%, #3F4751 100%)
-  border: 2px solid #484853
-  box-shadow: 4px 4px 25px 5px rgba(0, 0, 0, 0.25)
+  background: transparent
+  border: none
+  border-bottom: 2px solid #6d6d76
   transition: all 0.2s ease-in
-  border-radius: 1000px
+
+  &:focus
+    border-bottom: 2px solid #40be78
 </style>

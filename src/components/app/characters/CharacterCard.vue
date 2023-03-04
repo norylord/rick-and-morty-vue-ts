@@ -35,8 +35,7 @@ const props = defineProps<Props>()
 
 <style lang='sass'>
 .card
-  background: linear-gradient(90deg, #333047 0%, #3F4751 100%)
-  box-shadow: 4px 4px 15px 5px rgba(0, 0, 0, 0.25)
+  background: #515151
   margin: 12px
   cursor: pointer
   display: flex
@@ -49,7 +48,6 @@ const props = defineProps<Props>()
   transition: transform .2s ease-in-out, box-shadow .2s ease-in-out
 
   &:hover
-    box-shadow: 0 0 25px 5px rgba(0, 0, 0, 0.5)
     transform: scale(1.05)
 
   &__img
@@ -70,7 +68,7 @@ const props = defineProps<Props>()
       transition: color .1s ease-in-out
 
       &:hover
-        color: #1f6744
+        color: #40be78
 
     &-status
       font-weight: 300

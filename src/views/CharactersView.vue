@@ -35,7 +35,7 @@ watch(store.searchConfig, async () => {
 
 <style lang='sass'>
 .characters
-  background: linear-gradient(180deg, #404952 0%, #2A203F 100%)
+  background: transparent
 
   &__error
     text-align: center
@@ -44,7 +44,7 @@ watch(store.searchConfig, async () => {
   &__filter
     width: 100%
     height: 30vh
-    padding: 16px
+    padding: 16px 48px
     display: flex
     flex-direction: column
     align-items: start

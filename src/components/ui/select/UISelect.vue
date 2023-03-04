@@ -13,12 +13,12 @@ import {defineEmits, defineProps} from "vue";
 interface Props {
   options: object
 }
+
 const props = defineProps<Props>()
 
 
-
 const emit = defineEmits(['select'])
-const setOption = (e?:any) => {
+const setOption = (e?: any) => {
   emit('select', e.target.value)
 }
 </script>
@@ -26,12 +26,9 @@ const setOption = (e?:any) => {
 <style lang='sass'>
 .ui-select
   padding: 16px 32px
-  background: linear-gradient(90deg, #333047 0%, #3F4751 100%)
-  border: 2px solid #484853
-  box-shadow: 4px 4px 25px 5px rgba(0, 0, 0, 0.25)
-  border-radius: 1000px
-  border-bottom: 2px solid #353535
-  -moz-appearance: none /* Firefox */
-  -webkit-appearance: none /* Safari and Chrome */
-  appearance: none
+  background: #656565
+  font-size: 24px
+  border: none
+  border-radius: 8px
+  font-weight: 300
 </style>
